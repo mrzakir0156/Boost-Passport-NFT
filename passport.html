@@ -890,12 +890,18 @@
         let username = 'User';
         let currentNFTId = null;
 
-        // Slot Configurations
         const slotConfigs = [
-            { name: "S30", levels: [1, 2, 4, 8, 16], price: 20, subscription: 2 },
-            { name: "S14", levels: [1, 2, 4, 8], price: 160, subscription: 16 },
-            { name: "S6", levels: [1, 2, 4], price: 800, subscription: 80 }
-        ];
+    { name: "S30", levels: [1, 2, 4, 8, 16], price: 20, subscription: 2, order: 1 },
+    { name: "S14", levels: [1, 2, 4, 8], price: 160, subscription: 16, order: 2 },
+    { name: "S6", levels: [1, 2, 4], price: 800, subscription: 80, order: 3 },
+    { name: "S3", levels: [1, 3], price: 2000, subscription: 200, order: 4 },
+    { name: "S2", levels: [1, 2], price: 4000, subscription: 400, order: 5 },
+    { name: "S30 PRO", levels: [1, 2, 4, 8, 16], price: 2000, subscription: 200, order: 6 },
+    { name: "S14 PRO", levels: [1, 2, 4, 8], price: 6000, subscription: 600, order: 7 },
+    { name: "S6 PRO", levels: [1, 2, 4], price: 12000, subscription: 1200, order: 8 },
+    { name: "S3 PRO", levels: [1, 3], price: 18000, subscription: 1800, order: 9 },
+    { name: "S2 PRO", levels: [1, 2], price: 27000, subscription: 2700, order: 10 }
+];
 
         // Active slots state
         let activeNFTSlots = {};
