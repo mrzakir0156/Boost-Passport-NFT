@@ -887,7 +887,7 @@
 
     <script>
         // ============================================
-        // COMPLETE WORKING SYSTEM
+        // COMPLETE WORKING SYSTEM - FIXED
         // ============================================
 
         // Slot Configurations - All 10 slots
@@ -1128,10 +1128,6 @@
                 slot.currentIndex++;
                 renderSlots(nftState);
                 updateNFTStats(currentNFTId);
-                
-                if (slot.currentIndex === slot.nodes.length) {
-                    slot.recycle++;
-                }
             }
         }
 
@@ -1202,20 +1198,6 @@
                     for (let i = 0; i < count; i++) {
                         const node = document.createElement('div');
                         node.className = 'node';
-                        
-                        if (slot.nodes && slot.nodes.length > i) {
-                            const existingNode = slot.nodes[i];
-                            if (existingNode && existingNode.innerText) {
-                                node.innerText = existingNode.innerText;
-                                
-                                const percentage = getIncomePercentage(index, level, i, count);
-                                if (percentage > 0) {
-                                    node.classList.add(`income-${percentage}`);
-                                } else {
-                                    node.classList.add(`noincome-${percentage}`);
-                                }
-                            }
-                        }
                         
                         node.dataset.level = level;
                         node.dataset.position = i;
