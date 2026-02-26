@@ -1614,7 +1614,9 @@ function openMiningDashboard() {
     };
     
     localStorage.setItem('miningData', JSON.stringify(miningData));
-    window.open('https://codepen.io/YOUR_USERNAME/pen/MINING_PEN_ID', '_blank');
+    function goBack() {
+    window.location.href = 'https://mrzakir0156.github.io/Boost-Passport-NFT/index.html';
+}
     showToast('Opening Mining Dashboard...');
 }
 
