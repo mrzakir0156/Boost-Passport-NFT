@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFT Passport - Registration</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="glow-text">🎫 NFT Passport</h1>
+            <p class="subtitle">Enter your name to get started</p>
+            
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="username">What's your name?</label>
+                    <input type="text" id="username" required placeholder="e.g., Zakir, Rahul, Priya...">
+                </div>
+                
+                <button type="submit" class="btn-register">✨ Mint My Passport NFT ✨</button>
+            </form>
+            
+            <p class="note">🔑 You'll get a unique wallet address instantly</p>
+        </div>
+    </div>
+</body>
+</html>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.glow-text {
+    font-size: 2em;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+}
+
+.btn-register {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-register:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(102,126,234,0.4);
+}
+
+.note {
+    margin-top: 20px;
+    color: #888;
+    font-size: 14px;
+    text-align: center;
+}
+// Form submit handle karna
+document.getElementById('registrationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // User se data lena (sirf name)
+    const userData = {
+        username: document.getElementById('username').value,
+        walletAddress: generateWalletAddress(),
+        nftId: generateNFTId(),
+        timestamp: new Date().toISOString()
+    };
+    
+    // Data localStorage mein save karna
+    localStorage.setItem('passportData', JSON.stringify(userData));
+    
+    // Alert dikhana
+    alert('🎉 Registration Successful! Your NFT Passport is ready!\n\nWallet Address: ' + formatWalletAddress(userData.walletAddress) + '\nNFT ID: ' + userData.nftId);
+    
+    // Naye tab mein passport kholo
+    window.open('https://codepen.io/zakir-husian/pen/jEMErpZ', '_blank');
+    
+    // Form reset karna
+    this.reset();
+});
+
+// Random wallet address generate karna
+function generateWalletAddress() {
+    const chars = '0123456789abcdef';
+    let address = '0x';
+    for (let i = 0; i < 40; i++) {
+        address += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return address;
+}
+
+// Random NFT ID generate karna
+function generateNFTId() {
+    return 'NFT #' + Math.floor(Math.random() * 100000);
+}
+
+// Wallet address ko short format mein dikhana
+function formatWalletAddress(address) {
+    return address.substring(0, 6) + '...' + address.substring(address.length - 4);
+}
