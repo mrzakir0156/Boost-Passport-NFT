@@ -323,6 +323,417 @@
             background: repeating-linear-gradient(0deg, rgba(0,255,255,0.03) 0px, transparent 2px);
             pointer-events: none;
         }
+
+        /* Dashboard Page */
+        .dashboard-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100vh;
+            background: #0a0b0e;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 2000;
+        }
+
+        .back-to-nft-btn {
+            position: sticky;
+            top: 20px;
+            background: linear-gradient(145deg, #00ffff, #ff00ff);
+            border: none;
+            border-radius: 30px;
+            padding: 12px 25px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .back-to-nft-btn:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 0 30px rgba(0,255,255,0.5);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .current-nft-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .current-nft-info h2 {
+            font-size: 32px;
+            background: linear-gradient(145deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            padding: 10px 30px;
+            border: 2px solid rgba(0,255,255,0.3);
+            border-radius: 50px;
+            margin-bottom: 10px;
+        }
+
+        .current-nft-wallet {
+            font-size: 14px;
+            color: #4caf50;
+            font-family: monospace;
+            background: rgba(0,0,0,0.3);
+            padding: 8px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            border: 1px solid #00ffff;
+        }
+
+        .rme-card {
+            background: linear-gradient(145deg, #4a1a5a, #2a0a3a);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 2px solid #9c27b0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rme-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(156,39,176,0.2), transparent);
+            animation: rotate 10s linear infinite;
+        }
+
+        .rme-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .rme-header i {
+            color: #9c27b0;
+            font-size: 28px;
+        }
+
+        .rme-amount {
+            font-size: 36px;
+            font-weight: bold;
+            color: #9c27b0;
+            text-shadow: 0 0 20px rgba(156,39,176,0.5);
+        }
+
+        .slots-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .slots-title h2 {
+            color: #00ffff;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .slots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .slot-card {
+            background: #0f0f0f;
+            border: 2px solid #2a2a2a;
+            border-radius: 20px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .slot-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ffff;
+            box-shadow: 0 0 30px rgba(0,255,255,0.2);
+        }
+
+        .slot-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .slot-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #00ffff;
+        }
+
+        .slot-price {
+            background: #1a1a1a;
+            padding: 5px 12px;
+            border-radius: 20px;
+            color: #4caf50;
+        }
+
+        /* Matrix Levels */
+        .matrix-levels {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .level-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .level-label {
+            width: 35px;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        .nodes {
+            display: grid;
+            gap: 4px;
+            flex: 1;
+        }
+
+        .level-row[data-level="0"] .nodes { grid-template-columns: repeat(1, 1fr); }
+        .level-row[data-level="1"] .nodes { grid-template-columns: repeat(2, 1fr); }
+        .level-row[data-level="2"] .nodes { grid-template-columns: repeat(4, 1fr); }
+        .level-row[data-level="3"] .nodes { grid-template-columns: repeat(8, 1fr); }
+        .level-row[data-level="4"] .nodes { grid-template-columns: repeat(16, 1fr); }
+        .level-row[data-s3="true"] .nodes { grid-template-columns: repeat(3, 1fr) !important; }
+
+        .node {
+            aspect-ratio: 1;
+            background: #1a1a1a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            border: 1px solid #333;
+        }
+
+        .you-node {
+            background: #2a2a2a !important;
+            border: 2px solid #666;
+        }
+
+        .you-node::before {
+            content: '👤';
+            font-size: 20px;
+            color: #aaa;
+        }
+
+        /* Income Colors */
+        .node.income-20 { background: #00aa00; }
+        .node.income-25 { background: #44cc44; }
+        .node.income-50 { background: #4caf50; }
+        .node.income-80 { background: #2e7d32; }
+        .node.income-100 { background: #1b5e20; }
+        .node.noincome-20 { background: #aa0000; }
+        .node.noincome-25 { background: #cc4444; }
+        .node.noincome-50 { background: #ef5350; }
+        .node.noincome-80 { background: #e53935; }
+        .node.noincome-100 { background: #c62828; }
+
+        .slot-progress {
+            height: 4px;
+            background: #1e293b;
+            border-radius: 2px;
+            margin: 10px 0;
+        }
+
+        .slot-progress-fill {
+            height: 100%;
+            background: #00ffff;
+            border-radius: 2px;
+        }
+
+        .slot-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .income-box {
+            color: #4caf50;
+            background: rgba(76,175,80,0.1);
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .recycle-badge {
+            color: #3b82f6;
+            background: rgba(59,130,246,0.1);
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .slot-actions {
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .add-member-btn, .buy-slot-btn {
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .add-member-btn {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .buy-slot-btn {
+            background: #4caf50;
+            color: white;
+        }
+
+        .investment-summary-modern {
+            position: relative;
+            background: linear-gradient(145deg, #1a1a2a, #0f0f1f);
+            border-radius: 40px;
+            padding: 40px;
+            margin: 40px 0;
+            overflow: hidden;
+            border: 2px solid rgba(0,255,255,0.2);
+        }
+
+        .summary-glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,255,255,0.1), transparent);
+            animation: rotate 20s linear infinite;
+        }
+
+        .summary-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .summary-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #00ffff;
+        }
+
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .summary-card {
+            position: relative;
+            background: rgba(255,255,255,0.05);
+            border-radius: 30px;
+            padding: 25px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ffff;
+            box-shadow: 0 0 30px rgba(0,255,255,0.3);
+        }
+
+        .card-icon {
+            font-size: 32px;
+            color: #00ffff;
+            margin-bottom: 15px;
+        }
+
+        .card-label {
+            display: block;
+            color: #aaa;
+            font-size: 12px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00ffff;
+        }
+
+        .summary-footer {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(0,255,255,0.2);
+        }
+
+        .footer-stat {
+            text-align: center;
+        }
+
+        .footer-stat .stat-label {
+            display: block;
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .footer-stat .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00ffff;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #00ffff;
+            color: black;
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: none;
+            z-index: 9999;
+            font-weight: bold;
+        }
+
+        .toast.show {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -389,7 +800,85 @@
 
     <!-- Dashboard Page (Hidden by default) -->
     <div id="dashboardPage" class="dashboard-page" style="display: none;">
-        <!-- Back button will be here -->
+        <button class="back-to-nft-btn" onclick="backToNFT()">
+            <i class="fas fa-arrow-left"></i> BACK TO NFT
+        </button>
+        
+        <div class="container">
+            <div class="current-nft-info">
+                <h2>NFT <span id="currentNFTId">#1</span></h2>
+                <div class="current-nft-wallet" id="currentNFTWallet"></div>
+            </div>
+            
+            <div class="rme-card">
+                <div class="rme-header">
+                    <i class="fas fa-bolt"></i>
+                    <span>RME ENERGY TOKEN</span>
+                    <span class="rme-amount" id="rmeBalance">0</span>
+                </div>
+                <div class="rme-note">Earned from slot purchases</div>
+            </div>
+
+            <div class="slots-title">
+                <h2>🐋 META-WHALE BOOST SLOTS</h2>
+                <p>Add members to earn passive income</p>
+            </div>
+
+            <div class="slots-grid" id="slotsGrid"></div>
+
+            <div class="investment-summary-modern">
+                <div class="summary-glow"></div>
+                <div class="summary-content">
+                    <div class="summary-title">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>PORTFOLIO OVERVIEW</span>
+                    </div>
+                    
+                    <div class="summary-cards">
+                        <div class="summary-card">
+                            <div class="card-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="card-info">
+                                <span class="card-label">SLOT INVESTMENT</span>
+                                <span class="card-value" id="slotInvestment">0 IGT</span>
+                            </div>
+                        </div>
+                        
+                        <div class="summary-card">
+                            <div class="card-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="card-info">
+                                <span class="card-label">SUBSCRIBE INVEST</span>
+                                <span class="card-value" id="subInvestment">0 IGT</span>
+                            </div>
+                        </div>
+                        
+                        <div class="summary-card">
+                            <div class="card-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="card-info">
+                                <span class="card-label">TOTAL INVESTMENT</span>
+                                <span class="card-value" id="totalInvestment">0 IGT</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="summary-footer">
+                        <div class="footer-stat">
+                            <span class="stat-label">ACTIVE SLOTS</span>
+                            <span class="stat-value" id="activeSlots">0</span>
+                        </div>
+                        <div class="footer-stat">
+                            <span class="stat-label">TOTAL EARNED</span>
+                            <span class="stat-value" id="totalEarned">0 IGT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Toast -->
@@ -400,6 +889,17 @@
         let nfts = [];
         let nftCounter = 1000;
         let username = 'User';
+        let currentNFTId = null;
+
+        // Slot Configurations
+        const slotConfigs = [
+            { name: "S30", levels: [1, 2, 4, 8, 16], price: 20, subscription: 2 },
+            { name: "S14", levels: [1, 2, 4, 8], price: 160, subscription: 16 },
+            { name: "S6", levels: [1, 2, 4], price: 800, subscription: 80 }
+        ];
+
+        // Active slots state
+        let activeNFTSlots = {};
 
         window.onload = function() {
             const savedData = localStorage.getItem('passportData');
@@ -409,8 +909,7 @@
                 createFirstNFT(data);
             } else {
                 createFirstNFT({
-                    username: 'Crypto User',
-                    walletAddress: generateRandomWallet()
+                    username: 'Crypto User'
                 });
             }
         };
@@ -443,6 +942,15 @@
             nftCard.dataset.nftId = nftId;
             nftCard.dataset.wallet = randomWallet;
             
+            // Initialize state for this NFT
+            activeNFTSlots[nftId] = {
+                slots: [],
+                purchasedSlots: [],
+                userBalance: 500000,
+                rmeBalance: 0,
+                totalEarned: 0
+            };
+            
             updateNFTCard(nftCard, {
                 username: data.username,
                 nftId: `#${generateRandomNFTId()}`,
@@ -464,6 +972,15 @@
             nftCard.dataset.nftId = nftId;
             nftCard.dataset.wallet = randomWallet;
             
+            // Initialize state for this NFT
+            activeNFTSlots[nftId] = {
+                slots: [],
+                purchasedSlots: [],
+                userBalance: 500000,
+                rmeBalance: 0,
+                totalEarned: 0
+            };
+            
             updateNFTCard(nftCard, {
                 username: username,
                 nftId: `#${generateRandomNFTId()}`,
@@ -484,7 +1001,129 @@
         }
 
         function openDashboard(button) {
-            alert('Dashboard will open here');
+            const nftCard = button.closest('.nft-card-advanced');
+            const nftId = parseInt(nftCard.dataset.nftId);
+            
+            currentNFTId = nftId;
+            
+            document.getElementById('currentNFTId').textContent = nftCard.querySelector('#nft-id-display').textContent;
+            document.getElementById('currentNFTWallet').textContent = nftCard.querySelector('.nft-wallet').textContent;
+            
+            renderSlots(activeNFTSlots[nftId]);
+            
+            document.getElementById('dashboardPage').style.display = 'block';
+        }
+
+        function backToNFT() {
+            document.getElementById('dashboardPage').style.display = 'none';
+        }
+
+        function renderSlots(nftState) {
+            const grid = document.getElementById('slotsGrid');
+            grid.innerHTML = '';
+            
+            if (!nftState.slots || nftState.slots.length === 0) {
+                nftState.slots = slotConfigs.map((config, index) => ({
+                    name: config.name,
+                    nodes: [],
+                    currentIndex: 1,
+                    income: 0,
+                    recycle: 0,
+                    memberCounter: 0,
+                    purchased: false,
+                    bgwValue: 0.001,
+                    assetValue: 0.001
+                }));
+            }
+            
+            nftState.slots.forEach((slot, index) => {
+                const config = slotConfigs[index];
+                const isPurchased = nftState.purchasedSlots.includes(slot.name);
+                
+                const card = document.createElement('div');
+                card.className = 'slot-card';
+                
+                let html = `
+                    <div class="slot-header">
+                        <span class="slot-name">${slot.name}</span>
+                        <span class="slot-price">${config.price} IGT</span>
+                    </div>
+                    <div class="matrix-levels" id="levels-${index}"></div>
+                    <div class="slot-progress">
+                        <div class="slot-progress-fill" style="width:0%"></div>
+                    </div>
+                    <div class="slot-footer">
+                        <div class="income-box">INC ${Math.round(slot.income)}</div>
+                        <div class="recycle-badge">🔄 ${slot.recycle}</div>
+                    </div>
+                `;
+                
+                card.innerHTML = html;
+                
+                const levelsDiv = card.querySelector(`#levels-${index}`);
+                
+                config.levels.forEach((count, level) => {
+                    const row = document.createElement('div');
+                    row.className = 'level-row';
+                    row.setAttribute('data-level', level);
+                    
+                    const label = document.createElement('div');
+                    label.className = 'level-label';
+                    if (level === 0) label.innerText = 'YOU';
+                    else label.innerText = `L${level}`;
+                    
+                    const nodesDiv = document.createElement('div');
+                    nodesDiv.className = 'nodes';
+                    
+                    for (let i = 0; i < count; i++) {
+                        const node = document.createElement('div');
+                        node.className = 'node';
+                        if (level === 0 && i === 0) node.classList.add('you-node');
+                        nodesDiv.appendChild(node);
+                    }
+                    
+                    row.appendChild(label);
+                    row.appendChild(nodesDiv);
+                    levelsDiv.appendChild(row);
+                });
+                
+                const actionsDiv = document.createElement('div');
+                actionsDiv.className = 'slot-actions';
+                
+                if (isPurchased) {
+                    const addBtn = document.createElement('button');
+                    addBtn.className = 'add-member-btn';
+                    addBtn.innerHTML = '+ Add Member';
+                    actionsDiv.appendChild(addBtn);
+                } else {
+                    const buyBtn = document.createElement('button');
+                    buyBtn.className = 'buy-slot-btn';
+                    buyBtn.innerHTML = `💰 Buy ${config.price} IGT`;
+                    actionsDiv.appendChild(buyBtn);
+                }
+                
+                card.appendChild(actionsDiv);
+                grid.appendChild(card);
+            });
+            
+            updateSummary(nftState);
+        }
+
+        function updateSummary(nftState) {
+            let slotInvestment = 0;
+            let activeSlotsCount = nftState.purchasedSlots.length;
+            
+            nftState.purchasedSlots.forEach(slotName => {
+                const config = slotConfigs.find(s => s.name === slotName);
+                if (config) slotInvestment += config.price;
+            });
+            
+            document.getElementById('slotInvestment').innerHTML = slotInvestment + ' IGT';
+            document.getElementById('subInvestment').innerHTML = '0 IGT';
+            document.getElementById('totalInvestment').innerHTML = slotInvestment + ' IGT';
+            document.getElementById('activeSlots').innerHTML = activeSlotsCount;
+            document.getElementById('totalEarned').innerHTML = Math.round(nftState.totalEarned) + ' IGT';
+            document.getElementById('rmeBalance').innerHTML = nftState.rmeBalance;
         }
 
         function showToast(msg) {
@@ -496,6 +1135,7 @@
 
         window.createNewNFT = createNewNFT;
         window.openDashboard = openDashboard;
+        window.backToNFT = backToNFT;
     </script>
 </body>
 </html>
